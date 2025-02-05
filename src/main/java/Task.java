@@ -32,5 +32,15 @@ public class Task {
     public void setDone(boolean done) {
         this.done = done;
     }
+
+    public void printTask() {
+        System.out.print("[" + this.taskType + "][");
+        if (this.isDone()) {
+            System.out.print("X");
+        } else {
+            System.out.print(" ");
+        }
+        System.out.print("] " + this.taskName);
+    }
 }
 
