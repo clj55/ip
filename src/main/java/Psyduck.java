@@ -9,8 +9,7 @@ public class Psyduck {
 
     public static void main(String[] args) {
         Scanner scanObj = new Scanner(System.in);
-        List<String> storage = new ArrayList<>();
-        List<Boolean> isDone = new ArrayList<>();
+        List<Task> taskList = new ArrayList<Task>();
         System.out.println("Hello! I'm Psyduck");
         System.out.println("PSYDUCK?");
         printDashes();
@@ -19,55 +18,18 @@ public class Psyduck {
         printDashes();
         while (!userInput.equals("bye")) {
             if (userInput.equals("list")) {
-                int num = 1;
-                for (String s : storage) {
-                    System.out.print(num + ".[");
-                    if (isDone.get(num - 1)) {
-                        System.out.print("X");
-                    } else {
-                        System.out.print(" ");
-                    }
-                    System.out.println("] " + s);
-                    num += 1;
-                }
+                listTasks(taskList);
             } else if (userInput.startsWith("unmark")) {
-
                 String sNum = userInput.substring(7);
-                // System.out.println(sNum);
-                try {
-                    int iNum = Integer.parseInt(sNum);
-                    if ((iNum > isDone.size()) || (iNum <= 0)) {
-                        System.out.println("PSYDUCK ANGRY: PSYDUCK WANT NUMBER IN RANGE");
-                    } else {
-                        System.out.println("Psyduck is NOT impressed");
-                        iNum -= 1; // adjust to start with zero index
-                        isDone.set(iNum, false);
-                        System.out.println("[ ] " + storage.get(iNum));
-                    }
-                } catch (NumberFormatException e) {
-                    System.out.println("PSYDUCK ANGRY: PSYDUCK WANT NUMBERS");
-                }
-
+                unmarkTask(sNum, taskList);
             } else if (userInput.startsWith("mark")) {
-
                 String sNum = userInput.substring(5);
-                // System.out.println(sNum);
-                try {
-                    int iNum = Integer.parseInt(sNum);
-                    if ((iNum > isDone.size()) || iNum <= 0) {
-                        System.out.println("quacker not in list");
-                    } else {
-                        System.out.println("Psyduck is impressed");
-                        iNum -= 1; // adjust to start with zero index
-                        isDone.set(iNum, true);
-                        System.out.println("[X] " + storage.get(iNum));
-                    }
-                } catch (NumberFormatException e) {
-                    System.out.println("PSYDUCK ANGRY: PSYDUCK WANT NUMBERS");
-                }
-            } else {
-                storage.add(userInput);
-                isDone.add(false);
+                markTask(sNum, taskList);
+//            } else if (userInput.startsWith("deadline")) {
+
+            } else { // add task
+                Task task = new Task(userInput);
+                taskList.add(task);
                 System.out.print("Psyduck added: ");
                 System.out.println(userInput);
             }
@@ -80,4 +42,54 @@ public class Psyduck {
         printDashes();
 
     }
+
+    private static void markTask(String sNum, List<Task> taskList) {
+        try {
+            int iNum = Integer.parseInt(sNum);
+            if ((iNum > taskList.size()) || iNum <= 0) {
+                System.out.println("quacker not in list");
+            } else {
+                System.out.println("Psyduck is impressed");
+                iNum -= 1; // adjust to start with zero index
+                taskList.get(iNum).setDone(true);
+                System.out.println("[X] " + taskList.get(iNum).getTaskName());
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("PSYDUCK ANGRY: PSYDUCK WANT NUMBERS");
+        }
+    }
+
+    private static void unmarkTask(String sNum, List<Task> taskList) {
+        try {
+            int iNum = Integer.parseInt(sNum);
+            if ((iNum > taskList.size()) || (iNum <= 0)) {
+                System.out.println("PSYDUCK ANGRY: PSYDUCK WANT NUMBER IN RANGE");
+            } else {
+                System.out.println("Psyduck is NOT impressed");
+                iNum -= 1;
+                taskList.get(iNum).setDone(false);
+                System.out.println("[ ] " + taskList.get(iNum).getTaskName());
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("PSYDUCK ANGRY: PSYDUCK WANT NUMBERS");
+        }
+    }
+
+    public static void listTasks(List<Task> taskList){
+        int num = 1;
+        for (Task s : taskList) {
+            System.out.print(num + ".[");
+            if (s.isDone()) {
+                System.out.print("X");
+            } else {
+                System.out.print(" ");
+            }
+            System.out.println("] " + s.getTaskName());
+            num += 1;
+        }
+    }
 }
+
+
+
+
