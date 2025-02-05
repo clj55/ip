@@ -1,8 +1,12 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class Psyduck {
-    public static void printDashes () {
+    public static void printDashes() {
         System.out.println("--------------------------------------------");
     }
+
     public static void main(String[] args) {
         Scanner scanObj = new Scanner(System.in);
         List<String> storage = new ArrayList<>();
@@ -27,8 +31,8 @@ public class Psyduck {
                     num += 1;
                 }
             } else if (userInput.startsWith("unmark")) {
-                
-                String sNum = userInput.substring(7); 
+
+                String sNum = userInput.substring(7);
                 // System.out.println(sNum);
                 try {
                     int iNum = Integer.parseInt(sNum);
@@ -40,13 +44,13 @@ public class Psyduck {
                         isDone.set(iNum, false);
                         System.out.println("[ ] " + storage.get(iNum));
                     }
-                } catch (NumberFormatException e){
+                } catch (NumberFormatException e) {
                     System.out.println("PSYDUCK ANGRY: PSYDUCK WANT NUMBERS");
                 }
 
             } else if (userInput.startsWith("mark")) {
-                
-                String sNum = userInput.substring(5); 
+
+                String sNum = userInput.substring(5);
                 // System.out.println(sNum);
                 try {
                     int iNum = Integer.parseInt(sNum);
@@ -58,22 +62,22 @@ public class Psyduck {
                         isDone.set(iNum, true);
                         System.out.println("[X] " + storage.get(iNum));
                     }
-                } catch (NumberFormatException e){
+                } catch (NumberFormatException e) {
                     System.out.println("PSYDUCK ANGRY: PSYDUCK WANT NUMBERS");
                 }
             } else {
                 storage.add(userInput);
                 isDone.add(false);
                 System.out.print("Psyduck added: ");
-                System.out.println(userInput);    
+                System.out.println(userInput);
             }
-            printDashes();  
+            printDashes();
             System.out.print("Me: ");
             userInput = scanObj.nextLine();
             printDashes();
         }
         System.out.println("PSYYYYDUCKKKK");
         printDashes();
-        
+
     }
 }
