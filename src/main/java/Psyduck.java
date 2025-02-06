@@ -42,11 +42,14 @@ public class Psyduck {
                 taskList.add(newEvent);
                 count++;
                 printAddTaskStatement(newEvent);
-            } else { // add task
+            } else if (userInput.startsWith("todo")) {
+                String s = userInput.substring(4);
                 Task task = new Task(userInput);
                 taskList.add(task);
                 count++;
                 printAddTaskStatement(task);
+            } else {
+                System.out.println("nani??");
             }
             printDashes();
             System.out.print("Me: ");
