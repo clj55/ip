@@ -23,28 +23,28 @@ public class Psyduck {
             if (userInput.equals("list")) {
                 listTasks(taskList);
             } else if (userInput.startsWith("unmark")) {
-                String sNum = userInput.substring(7);
-                unmarkTask(sNum, taskList);
+                String[] details = userInput.split(" ", 2);
+                unmarkTask(details[1], taskList);
             } else if (userInput.startsWith("mark")) {
-                String sNum = userInput.substring(5);
-                markTask(sNum, taskList);
+                String[] details = userInput.split(" ", 2);
+                markTask(details[1], taskList);
             } else if (userInput.startsWith("deadline")) {
-                String s = userInput.substring(8);
-                String[] splitted = s.split("/");
+                String[] details = userInput.split(" ", 2);
+                String[] splitted = details[1].split("/");
                 Deadline newDeadline = new Deadline(splitted[0].trim(), splitted[1]);
                 taskList.add(newDeadline);
                 count++;
                 printAddTaskStatement(newDeadline);
             } else if (userInput.startsWith("event")) {
-                String s = userInput.substring(5);
-                String[] splitted = s.split("/");
+                String[] details = userInput.split(" ", 2);
+                String[] splitted = details[1].split("/");
                 Event newEvent = new Event(splitted[0].trim(), splitted[1], splitted[2]);
                 taskList.add(newEvent);
                 count++;
                 printAddTaskStatement(newEvent);
             } else if (userInput.startsWith("todo")) {
-                String s = userInput.substring(4);
-                Task task = new Task(userInput);
+                String details = userInput.substring(4);
+                Task task = new Task(details);
                 taskList.add(task);
                 count++;
                 printAddTaskStatement(task);
