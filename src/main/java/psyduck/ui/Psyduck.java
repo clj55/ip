@@ -1,6 +1,12 @@
+package psyduck.ui;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import psyduck.task.Deadline;
+import psyduck.task.Event;
+import psyduck.task.Task;
 
 public class Psyduck {
     private static int count = 0;

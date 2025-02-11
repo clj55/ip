@@ -1,3 +1,5 @@
+package psyduck.task;
+
 public class Task {
     private String taskName;
     private char taskType;
