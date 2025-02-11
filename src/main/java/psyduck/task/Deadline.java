@@ -1,3 +1,5 @@
+package psyduck.task;
+
 public class Deadline extends Task {
     private String datetime;
 
