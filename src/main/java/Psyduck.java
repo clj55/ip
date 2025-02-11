@@ -5,61 +5,76 @@ import java.util.Scanner;
 public class Psyduck {
     private static int count = 0;
 
-    public static void printDashes() {
-        System.out.println("--------------------------------------------");
-    }
-
     public static void main(String[] args) {
         Scanner scanObj = new Scanner(System.in);
         List<Task> taskList = new ArrayList<Task>();
-        System.out.println("Hello! I'm Psyduck");
-        System.out.println("PSYDUCK?");
-        printDashes();
-        System.out.print("Me: ");
-        String userInput = scanObj.nextLine();
-        printDashes();
-        userInput = userInput.trim();
+        printIntro();
+        String userInput = getUserInput(scanObj);
         while (!userInput.equals("bye")) {
             if (userInput.equals("list")) {
                 listTasks(taskList);
             } else if (userInput.startsWith("unmark")) {
-                String[] details = userInput.split(" ", 2);
-                unmarkTask(details[1], taskList);
+                unmarkTask(userInput, taskList);
             } else if (userInput.startsWith("mark")) {
-                String[] details = userInput.split(" ", 2);
-                markTask(details[1], taskList);
+                markTask(userInput, taskList);
             } else if (userInput.startsWith("deadline")) {
-                String[] details = userInput.split(" ", 2);
-                String[] splitted = details[1].split("/");
-                Deadline newDeadline = new Deadline(splitted[0].trim(), splitted[1]);
-                taskList.add(newDeadline);
-                count++;
-                printAddTaskStatement(newDeadline);
+                addDeadline(userInput, taskList);
             } else if (userInput.startsWith("event")) {
-                String[] details = userInput.split(" ", 2);
-                String[] splitted = details[1].split("/");
-                Event newEvent = new Event(splitted[0].trim(), splitted[1], splitted[2]);
-                taskList.add(newEvent);
-                count++;
-                printAddTaskStatement(newEvent);
+                addEvent(userInput, taskList);
             } else if (userInput.startsWith("todo")) {
-                String details = userInput.substring(4);
-                Task task = new Task(details);
-                taskList.add(task);
-                count++;
-                printAddTaskStatement(task);
+                addTodo(userInput, taskList);
             } else {
                 System.out.println("nani??");
             }
-            printDashes();
-            System.out.print("Me: ");
-            userInput = scanObj.nextLine();
-            userInput = userInput.trim();
-            printDashes();
+            userInput = getUserInput(scanObj);
         }
         System.out.println("PSYYYYDUCKKKK");
         printDashes();
+    }
 
+    private static String getUserInput(Scanner scanObj) {
+        printDashes();
+        String userInput;
+        System.out.print("Me: ");
+        userInput = scanObj.nextLine();
+        userInput = userInput.trim();
+        printDashes();
+        return userInput;
+    }
+
+    private static void addTodo(String userInput, List<Task> taskList) {
+        String details = userInput.substring(4);
+        Task task = new Task(details);
+        taskList.add(task);
+        count++;
+        printAddTaskStatement(task);
+    }
+
+    private static void addEvent(String userInput, List<Task> taskList) {
+        String[] details = userInput.split(" ", 2);
+        String[] splitted = details[1].split("/");
+        Event newEvent = new Event(splitted[0].trim(), splitted[1], splitted[2]);
+        taskList.add(newEvent);
+        count++;
+        printAddTaskStatement(newEvent);
+    }
+
+    private static void addDeadline(String userInput, List<Task> taskList) {
+        String[] details = userInput.split(" ", 2);
+        String[] splitted = details[1].split("/");
+        Deadline newDeadline = new Deadline(splitted[0].trim(), splitted[1]);
+        taskList.add(newDeadline);
+        count++;
+        printAddTaskStatement(newDeadline);
+    }
+
+    private static void printIntro() {
+        System.out.println("Hello! I'm Psyduck");
+        System.out.println("PSYDUCK?");
+    }
+
+    public static void printDashes() {
+        System.out.println("--------------------------------------------");
     }
 
     private static void printAddTaskStatement(Task task) {
@@ -69,14 +84,15 @@ public class Psyduck {
         System.out.println("You have " + count + " psyduck tasks");
     }
 
-    private static void markTask(String sNum, List<Task> taskList) {
+    private static void markTask(String userInput, List<Task> taskList) {
         try {
-            int iNum = Integer.parseInt(sNum);
+            String[] details = userInput.split(" ", 2);
+            int iNum = Integer.parseInt(details[1]);
             if ((iNum > taskList.size()) || iNum <= 0) {
                 System.out.println("quacker not in list");
             } else {
                 System.out.println("Psyduck is impressed");
-                iNum -= 1; // adjust to start with zero index
+                iNum -= 1; // convert task number to index in tasklist
                 Task task = taskList.get(iNum);
                 task.setDone(true);
                 task.printTask();
@@ -87,9 +103,10 @@ public class Psyduck {
         }
     }
 
-    private static void unmarkTask(String sNum, List<Task> taskList) {
+    private static void unmarkTask(String userInput, List<Task> taskList) {
         try {
-            int iNum = Integer.parseInt(sNum);
+            String[] details = userInput.split(" ", 2);
+            int iNum = Integer.parseInt(details[1]);
             if ((iNum > taskList.size()) || (iNum <= 0)) {
                 System.out.println("PSYDUCK ANGRY: PSYDUCK WANT NUMBER IN RANGE");
             } else {
