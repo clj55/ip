@@ -17,7 +17,7 @@ import psyduck.task.Task;
 
 
 public class Psyduck {
-    private static final String TASK_LIST_FILEPATH = "src/main/java/psyduck/data/tasks.txt";
+    private static final String TASK_LIST_FILEPATH = "./PsyduckData/tasks.txt";
     private static final Path path = Paths.get(TASK_LIST_FILEPATH);
     private static int count = 0;
     private static final ArrayList<Task> taskList = new ArrayList<>();
@@ -26,16 +26,26 @@ public class Psyduck {
 
     public static void main(String[] args) throws IOException {
         File f = new File(TASK_LIST_FILEPATH);
-        f.createNewFile(); // create tasks file if it does not exist
+        try {
+            f.getParentFile().mkdirs();
+            f.createNewFile();
+        } catch(IOException e){
+            e.printStackTrace();
+            System.out.println("could not create tasks.txt file");// create tasks file if it does not exist
+        }
 
         Scanner fileScanner = new Scanner(f);
         while (fileScanner.hasNext()) {
             String fileLine = fileScanner.nextLine();
+            if (fileLine.isBlank()) {
+                continue;
+            }
             String[] taskDetails = fileLine.split("/");
+            boolean taskIsDone = taskDetails[1].equals("1");
             switch (taskDetails[0]) {
-            case "T" -> addtoTaskList(new Task(taskDetails[2]));
-            case "D" -> addtoTaskList(new Deadline(taskDetails[2], taskDetails[3]));
-            case "E" -> addtoTaskList(new Event(taskDetails[2], taskDetails[3], taskDetails[4]));
+            case "T" -> addtoTaskList(new Task(taskDetails[2], taskIsDone));
+            case "D" -> addtoTaskList(new Deadline(taskDetails[2], taskIsDone, taskDetails[3]));
+            case "E" -> addtoTaskList(new Event(taskDetails[2], taskIsDone, taskDetails[3], taskDetails[4]));
             }
         }
         printIntro();
@@ -127,7 +137,7 @@ public class Psyduck {
             String[] splitted = parseTask(userInput);
             Deadline newDeadline = new Deadline(splitted[0], splitted[1]);
             addtoTaskList(newDeadline);
-            appendToFile(TASK_LIST_FILEPATH, "\n" + newDeadline.getTaskType() + "/" +
+            appendToFile(TASK_LIST_FILEPATH,newDeadline.getTaskType() + "/" +
                     (newDeadline.checkDone() ? 1 : 0) + "/" + newDeadline.getTaskName()
                     + "/" + newDeadline.getDatetime() + "\n");
         } catch (ArrayIndexOutOfBoundsException e) {

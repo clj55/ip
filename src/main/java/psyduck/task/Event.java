@@ -10,6 +10,12 @@ public class Event extends Task {
         this.start = start;
         this.end = end;
     }
+    public Event(String taskName, boolean isDone, String start, String end) {
+        super(taskName, isDone);
+        this.setTaskType('E');
+        this.start = start;
+        this.end = end;
+    }
 
     public String getStart() {
         return start;

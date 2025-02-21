@@ -9,6 +9,12 @@ public class Deadline extends Task {
         this.datetime = datetime;
     }
 
+    public Deadline(String taskName, boolean isDone, String datetime) {
+        super(taskName, isDone);
+        this.setTaskType('D');
+        this.datetime = datetime;
+    }
+
     public String getDatetime() {
         return datetime;
     }
