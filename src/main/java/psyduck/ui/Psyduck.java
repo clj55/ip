@@ -56,6 +56,8 @@ public class Psyduck {
                 addEvent(userInput);
             } else if (userInput.startsWith("todo")) {
                 addTodo(userInput);
+            } else if (userInput.startsWith("delete")) {
+                deleteTask(userInput);
             } else {
                 System.out.println("nani??");
             }
@@ -168,7 +170,7 @@ public class Psyduck {
 
     private static void markTask(String userInput) throws IOException {
         try {
-            int iNum = parseMarker(userInput);
+            int iNum = parseTaskIndexedInstruction(userInput);
             Task task = taskList.get(iNum);
             System.out.println("Psyduck is impressed");
             task.setDone(true);
@@ -176,13 +178,14 @@ public class Psyduck {
             rewriteLine(iNum, editedLine);
             task.printTask();
             System.out.println();
-        } catch (MarkUndefinedException e) {
+        } catch (TaskIndexUndefinedException e) {
+            //Exception handled in parseMarker
         }
     }
 
     private static void unmarkTask(String userInput) throws IOException {
         try {
-            int iNum = parseMarker(userInput);
+            int iNum = parseTaskIndexedInstruction(userInput);
             Task task = taskList.get(iNum);
             System.out.println("Psyduck is NOT impressed");
             task.setDone(false);
@@ -190,27 +193,43 @@ public class Psyduck {
             rewriteLine(iNum, editedLine);
             task.printTask();
             System.out.println();
-        } catch (MarkUndefinedException e) {
+        } catch (TaskIndexUndefinedException e) {
+            //Exception handled in parseMarker
+        }
+    }
+
+    private static void deleteTask (String userInput) {
+        try {
+            int iNum = parseTaskIndexedInstruction(userInput);
+            Task task = taskList.get(iNum);
+            System.out.println("Psyduck deleted task: ");
+            task.printTask();
+            System.out.println();
+            taskList.remove(task);
+            count--;
+            System.out.println("Now you have " + count + " psyduck tasks");
+        } catch (TaskIndexUndefinedException e) {
+            //Exception handled in parseMarker
         }
     }
 
     // parses mark/unmark instruction and returns corresponding task index
-    private static int parseMarker(String userInput) throws MarkUndefinedException {
+    private static int parseTaskIndexedInstruction(String userInput) throws TaskIndexUndefinedException {
         try {
             String[] details = userInput.split(" ", 2);
             int iNum = Integer.parseInt(details[1]);
             if ((iNum > count) || iNum <= 0) {
                 System.out.println("Psyduck: quacker not in list");
-                throw new MarkUndefinedException();
+                throw new TaskIndexUndefinedException();
             }
             iNum -= 1; // convert task number to index in tasklist
             return iNum;
         } catch (NumberFormatException e) {
             System.out.println("PSYDUCK ANGRY: PSYDUCK WANT NUMBERS");
-            throw new MarkUndefinedException();
+            throw new TaskIndexUndefinedException();
         } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Psyduck: Mark what number");
-            throw new MarkUndefinedException();
+            System.out.println("Psyduck: what Task number");
+            throw new TaskIndexUndefinedException();
         }
     }
 
