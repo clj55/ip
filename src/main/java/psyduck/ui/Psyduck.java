@@ -208,7 +208,7 @@ public class Psyduck {
         }
     }
 
-    private static void deleteTask (String userInput) {
+    private static void deleteTask (String userInput) throws IOException {
         try {
             int iNum = parseTaskIndexedInstruction(userInput);
             Task task = taskList.get(iNum);
@@ -216,6 +216,8 @@ public class Psyduck {
             task.printTask();
             System.out.println();
             taskList.remove(task);
+            fileLines.remove(iNum);
+            Files.write(path, fileLines, StandardCharsets.UTF_8);
             count--;
             System.out.println("Now you have " + count + " psyduck tasks");
         } catch (TaskIndexUndefinedException e) {
