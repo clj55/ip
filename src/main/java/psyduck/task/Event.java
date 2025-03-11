@@ -37,4 +37,9 @@ public class Event extends Task {
         super.printTask();
         System.out.print(" (from: " + this.start + " to: " + this.end + ")");
     }
+    public String toString() {
+        return this.getTaskType() + "/"
+                + (this.checkDone() ? 1 : 0) + "/" + this.getTaskName()
+                + "/" + this.getStart() + "/" + this.getEnd();
+    }
 }

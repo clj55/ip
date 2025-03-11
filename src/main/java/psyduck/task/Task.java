@@ -50,5 +50,9 @@ public class Task {
         }
         System.out.print("] " + this.taskName);
     }
+
+    public String toString() {
+        return this.getTaskType() + "/" +(this.checkDone() ? 1 : 0) + "/" + this.getTaskName();
+    }
 }
 
