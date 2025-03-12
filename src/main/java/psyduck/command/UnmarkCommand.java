@@ -4,6 +4,7 @@ public class UnmarkCommand extends TaskIndexedCommand {
     public UnmarkCommand(String userInput) {
         super(userInput);
     }
+
     public CommandResult execute() {
         if (!this.isSuccessParse()) {
             return null;

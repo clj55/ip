@@ -1,7 +1,7 @@
 package psyduck.command;
 
-import static psyduck.Psyduck.taskList;
 import static psyduck.Psyduck.count;
+import static psyduck.Psyduck.taskList;
 
 public class DeleteCommand extends TaskIndexedCommand {
     public DeleteCommand(String userInput) {

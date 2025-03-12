@@ -1,7 +1,5 @@
 package psyduck.command;
 
-import java.io.IOException;
-
 public class InvalidCommand extends Command {
     public InvalidCommand() {
         super();

@@ -2,12 +2,13 @@ package psyduck.command;
 
 import static psyduck.Psyduck.count;
 import static psyduck.Psyduck.taskList;
+
 import java.io.IOException;
 
 import psyduck.exception.TaskUndefinedException;
 import psyduck.task.Task;
 
-public abstract class AddCommand extends Command{
+public abstract class AddCommand extends Command {
     private String userInput;
 
     public AddCommand(String userInput) {

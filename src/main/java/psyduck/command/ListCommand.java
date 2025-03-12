@@ -1,5 +1,7 @@
 package psyduck.command;
+
 import static psyduck.Psyduck.taskList;
+
 import psyduck.task.Task;
 
 public class ListCommand extends Command {
@@ -15,5 +17,5 @@ public class ListCommand extends Command {
             System.out.println("No Psyduck Tasks");
         }
         return null;
-    };
+    }
 }

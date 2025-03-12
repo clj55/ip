@@ -4,6 +4,7 @@ public class MarkCommand extends TaskIndexedCommand {
     public MarkCommand(String userInput) {
         super(userInput);
     }
+
     public CommandResult execute() {
         if (!this.isSuccessParse()) {
             return null;

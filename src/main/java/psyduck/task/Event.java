@@ -10,6 +10,7 @@ public class Event extends Task {
         this.start = start;
         this.end = end;
     }
+
     public Event(String taskName, boolean isDone, String start, String end) {
         super(taskName, isDone);
         this.setTaskType('E');
@@ -33,11 +34,11 @@ public class Event extends Task {
         this.end = end;
     }
 
-    public void printTask() {
-        super.printTask();
-        System.out.print(" (from: " + this.start + " to: " + this.end + ")");
-    }
     public String toString() {
+        return super.toString() + " (from: " + this.start + " to: " + this.end + ")";
+    }
+
+    public String toFileString() {
         return this.getTaskType() + "/"
                 + (this.checkDone() ? 1 : 0) + "/" + this.getTaskName()
                 + "/" + this.getStart() + "/" + this.getEnd();
