@@ -14,7 +14,9 @@ public class AddEventCommand extends AddCommand {
     public CommandResult execute() throws IOException {
         try {
             String[] splitted = parseTask();
-            if (splitted.length != 3) {
+            if (splitted.length < 3) {
+                throw new ArrayIndexOutOfBoundsException("Not enough datetimes");
+            } else if (splitted.length > 3) {
                 throw new ExcessArgsException("Too many datetimes in Event");
             }
             Event newEvent = new Event(splitted[0], splitted[1], splitted[2]);

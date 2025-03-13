@@ -17,8 +17,10 @@ public class AddDeadlineCommand extends AddCommand {
     public CommandResult execute() throws IOException {
         try {
             String[] splitted = parseTask();
-            if (splitted.length != 2) {
+            if (splitted.length > 2) {
                 throw new ExcessArgsException("Too many datetimes in Deadline");
+            } else if (splitted.length < 2) {
+                throw new ArrayIndexOutOfBoundsException("Too few datetimes in Deadline");
             }
             Deadline newDeadline = new Deadline(splitted[0], splitted[1]);
             addtoTaskList(newDeadline);
