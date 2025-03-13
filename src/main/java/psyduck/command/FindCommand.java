@@ -28,7 +28,7 @@ public class FindCommand extends Command {
         if (matchCount == 0) {
             System.out.println("No matches found");
             return null;
-        }2
+        }
         System.out.println("Here are the matching tasks:");
         System.out.print(matches);
 
