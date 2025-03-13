@@ -1,4 +1,5 @@
 package psyduck.command;
+
 import psyduck.task.Task;
 
 public class CommandResult {

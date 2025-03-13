@@ -6,12 +6,12 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
+import psyduck.command.CommandResult;
 import psyduck.task.Deadline;
 import psyduck.task.Event;
 import psyduck.task.Task;
-import psyduck.command.CommandResult;
 
-public class TaskFileInterfacer extends FileInterfacer{
+public class TaskFileInterfacer extends FileInterfacer {
 
     public TaskFileInterfacer(String filepath) {
         super(filepath);
@@ -36,7 +36,7 @@ public class TaskFileInterfacer extends FileInterfacer{
     }
 
     public void savetoTaskFile(CommandResult result) throws IOException {
-        if (result.isDelete()){
+        if (result.isDelete()) {
             deleteLine(result.getTaskNum());
             return;
         }

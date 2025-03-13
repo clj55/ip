@@ -27,7 +27,8 @@ public class Deadline extends Task {
         super.printTask();
         System.out.print(" (by: " + this.datetime + ")");
     }
-    public String toString () {
+
+    public String toString() {
         return this.getTaskType() + "/" +
                 (this.checkDone() ? 1 : 0) + "/" + this.getTaskName()
                 + "/" + this.getDatetime();

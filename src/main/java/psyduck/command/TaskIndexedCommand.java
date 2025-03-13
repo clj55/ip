@@ -1,4 +1,5 @@
 package psyduck.command;
+
 import static psyduck.Psyduck.count;
 import static psyduck.Psyduck.taskList;
 
@@ -15,7 +16,7 @@ public abstract class TaskIndexedCommand extends Command {
         try {
             this.index = parseTaskIndexedInstruction(userInput);
             this.task = taskList.get(index);
-        } catch (TaskIndexUndefinedException e){
+        } catch (TaskIndexUndefinedException e) {
             this.setSuccessParse(false);
         }
     }

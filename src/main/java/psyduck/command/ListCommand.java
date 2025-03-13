@@ -15,5 +15,5 @@ public class ListCommand extends Command {
             System.out.println("No Psyduck Tasks");
         }
         return null;
-    };
+    }
 }

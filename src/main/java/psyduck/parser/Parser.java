@@ -2,10 +2,10 @@ package psyduck.parser;
 
 import java.util.Scanner;
 
-import psyduck.command.Command;
 import psyduck.command.AddDeadlineCommand;
 import psyduck.command.AddEventCommand;
 import psyduck.command.AddTodoCommand;
+import psyduck.command.Command;
 import psyduck.command.DeleteCommand;
 import psyduck.command.InvalidCommand;
 import psyduck.command.ListCommand;
@@ -18,7 +18,7 @@ public class Parser {
     private static final Scanner userInputScanner = new Scanner(System.in);
 
     public static Command chooseCommand(String userInput) {
-    //change back to the starts with version
+        //change back to the starts with version
         String details;
         if (userInput.equals("list")) {
             return new ListCommand();

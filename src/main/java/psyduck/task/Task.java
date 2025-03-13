@@ -52,7 +52,7 @@ public class Task {
     }
 
     public String toString() {
-        return this.getTaskType() + "/" +(this.checkDone() ? 1 : 0) + "/" + this.getTaskName();
+        return this.getTaskType() + "/" + (this.checkDone() ? 1 : 0) + "/" + this.getTaskName();
     }
 }
 

@@ -1,6 +1,7 @@
 package psyduck.command;
 
 import static psyduck.Psyduck.count;
+
 import java.io.IOException;
 
 import psyduck.task.Task;

@@ -10,7 +10,7 @@ public class UI {
         System.out.println("PSYDUCK?");
     }
 
-    public static void printOutro(){
+    public static void printOutro() {
         System.out.println("PSYYYYDUCKKKK");
         printDashes();
     }

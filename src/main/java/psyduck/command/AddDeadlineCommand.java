@@ -11,7 +11,7 @@ public class AddDeadlineCommand extends AddCommand {
 
     public AddDeadlineCommand(String userInput) {
         super(userInput);
-    };
+    }
 
     public CommandResult execute() throws IOException {
         try {
