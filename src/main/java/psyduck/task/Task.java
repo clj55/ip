@@ -42,16 +42,21 @@ public class Task {
     }
 
     public void printTask() {
-        System.out.print("[" + this.taskType + "][");
-        if (this.checkDone()) {
-            System.out.print("X");
-        } else {
-            System.out.print(" ");
-        }
-        System.out.print("] " + this.taskName);
+        System.out.print(this);
     }
 
     public String toString() {
+        String output = "[" + this.taskType + "][";
+        if (this.checkDone()) {
+            output += "X";
+        } else {
+            output += " ";
+        }
+        output += "] " + this.taskName;
+        return output;
+    }
+
+    public String toFileString() {
         return this.getTaskType() + "/" + (this.checkDone() ? 1 : 0) + "/" + this.getTaskName();
     }
 }

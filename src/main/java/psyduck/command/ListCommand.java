@@ -1,5 +1,7 @@
 package psyduck.command;
+
 import static psyduck.Psyduck.taskList;
+
 import psyduck.task.Task;
 
 public class ListCommand extends Command {

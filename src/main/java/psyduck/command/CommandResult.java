@@ -10,13 +10,13 @@ public class CommandResult {
     public CommandResult(int taskNum, Task task, boolean isDelete) {
         this.isDelete = isDelete;
         this.taskNum = taskNum;
-        this.toStore = task.toString();
+        this.toStore = task.toFileString();
     }
 
     public CommandResult(int taskNum, Task task) {
         this.isDelete = false;
         this.taskNum = taskNum;
-        this.toStore = task.toString();
+        this.toStore = task.toFileString();
     }
 
     public int getTaskNum() {

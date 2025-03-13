@@ -23,12 +23,11 @@ public class Deadline extends Task {
         this.datetime = datetime;
     }
 
-    public void printTask() {
-        super.printTask();
-        System.out.print(" (by: " + this.datetime + ")");
+    public String toString() {
+        return super.toString() + " (by: " + this.datetime + ")";
     }
 
-    public String toString() {
+    public String toFileString() {
         return this.getTaskType() + "/" +
                 (this.checkDone() ? 1 : 0) + "/" + this.getTaskName()
                 + "/" + this.getDatetime();

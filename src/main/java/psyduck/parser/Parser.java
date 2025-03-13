@@ -7,6 +7,7 @@ import psyduck.command.AddEventCommand;
 import psyduck.command.AddTodoCommand;
 import psyduck.command.Command;
 import psyduck.command.DeleteCommand;
+import psyduck.command.FindCommand;
 import psyduck.command.InvalidCommand;
 import psyduck.command.ListCommand;
 import psyduck.command.MarkCommand;
@@ -40,6 +41,9 @@ public class Parser {
         }
         if (userInput.startsWith("delete")) {
             return new DeleteCommand(userInput);
+        }
+        if (userInput.startsWith("find")) {
+            return new FindCommand(userInput);
         }
         return new InvalidCommand();
     }
