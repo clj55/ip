@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import psyduck.exception.TaskUndefinedException;
 import psyduck.task.Event;
+import psyduck.ui.UI;
 
 public class AddEventCommand extends AddCommand {
     public AddEventCommand(String details) {
@@ -21,10 +22,11 @@ public class AddEventCommand extends AddCommand {
 
         } catch (ArrayIndexOutOfBoundsException e) {
             //if user did not put start &/or end time
-            System.out.println("Psyduck: Nanji kara nanji made desuka (What time start what time end)?");
+            System.out.println("Psyduck: What time start what time end?");
         } catch (TaskUndefinedException e) {
-            System.out.println("Psyduck: Nani Event");
+            System.out.println("Psyduck: Nani Event?");
         }
+        UI.printCommandFormat(AddEventCommand.class);
         return null;
     }
 }

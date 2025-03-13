@@ -1,5 +1,7 @@
 package psyduck.command;
 
+import psyduck.ui.UI;
+
 public class UnmarkCommand extends TaskIndexedCommand {
     public UnmarkCommand(String userInput) {
         super(userInput);
@@ -7,6 +9,7 @@ public class UnmarkCommand extends TaskIndexedCommand {
 
     public CommandResult execute() {
         if (!this.isSuccessParse()) {
+            UI.printCommandFormat(UnmarkCommand.class);
             return null;
         }
         System.out.println("Psyduck is NOT impressed");

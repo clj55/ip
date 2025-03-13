@@ -3,6 +3,8 @@ package psyduck.command;
 import static psyduck.Psyduck.count;
 import static psyduck.Psyduck.taskList;
 
+import psyduck.ui.UI;
+
 public class DeleteCommand extends TaskIndexedCommand {
     public DeleteCommand(String userInput) {
         super(userInput);
@@ -10,6 +12,7 @@ public class DeleteCommand extends TaskIndexedCommand {
 
     public CommandResult execute() {
         if (!this.isSuccessParse()) {
+            UI.printCommandFormat(DeleteCommand.class);
             return null;
         }
         System.out.println("Psyduck deleted task: ");
