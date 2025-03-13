@@ -10,6 +10,12 @@ public class AddTodoCommand extends AddCommand {
         super(details);
     }
 
+    /**
+     * Adds Todo to the Tasklist
+     * @return Command result containing new task
+     * Line number in command result is last line in text file
+     * @throws IOException
+     */
     public CommandResult execute() throws IOException {
         String details = this.getUserInput().substring(4);
         if (details.isEmpty()) {

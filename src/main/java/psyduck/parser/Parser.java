@@ -17,6 +17,11 @@ public class Parser {
 
     private static final Scanner userInputScanner = new Scanner(System.in);
 
+    /**
+     * Creates Command Object corresponding to the user's input
+     * @param userInput
+     * @return Command Object
+     */
     public static Command chooseCommand(String userInput) {
     //change back to the starts with version
         String details;
@@ -44,6 +49,10 @@ public class Parser {
         return new InvalidCommand();
     }
 
+    /**
+     * Requests User for Input
+     * @return
+     */
     public static String getUserInput() {
         UI.printDashes();
         String userInput;

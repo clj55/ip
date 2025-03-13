@@ -10,6 +10,11 @@ public class AddEventCommand extends AddCommand {
         super(details);
     }
 
+    /**
+     * Adds Event Task to TaskList
+     * @return Command Result with new Event
+     * @throws IOException
+     */
     public CommandResult execute() throws IOException {
     try {
         String[] splitted = parseTask();

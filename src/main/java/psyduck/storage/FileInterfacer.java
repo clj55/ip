@@ -1,45 +1,61 @@
 package psyduck.storage;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
-import psyduck.task.Deadline;
-import psyduck.task.Event;
-import psyduck.task.Task;
-import static psyduck.command.AddCommand.addtoTaskList;
-
+/**
+ * Represents a File and allows editing of specific lines in the file
+ */
 public class FileInterfacer {
+
     private final Path path;
     private final String filepath;
 
+    /**
+     * Creates a FileInterfacer with the specified filepath
+     * @param filepath Directory Path to the file
+     */
     public FileInterfacer(String filepath) {
         this.filepath = filepath;
         this.path = Paths.get(filepath);
     }
 
-    public List<String> getFileLines() throws IOException{
+    /**
+     * Gets all lines of text in the file as a list
+     * @return List of file lines
+     * @throws IOException
+     */
+    public List<String> getFileLines() throws IOException {
         return Files.readAllLines(path);
     }
 
-    public void deleteLine(int lineIndex) throws IOException{
+    /**
+     * Deletes a line at specified lineIndex
+     * @param lineIndex Index of Line in fileLines list = Line Number in text file - 1
+     * @throws IOException
+     */
+    public void deleteLine(int lineIndex) throws IOException {
         List<String> fileLines = getFileLines();
         fileLines.remove(lineIndex);
         Files.write(path, fileLines, StandardCharsets.UTF_8);
     }
 
-    public void writeLine(int lineIndex, String data) throws IOException {
+    /**
+     * Writes text to a specific line
+     * @param lineIndex Index of Line in fileLines list = Line Number in text file - 1
+     * @param text Text to write
+     * @throws IOException
+     */
+    public void writeLine(int lineIndex, String text) throws IOException {
         List<String> fileLines = getFileLines();
         if (lineIndex >= fileLines.size()) {
-            fileLines.add(data);
+            fileLines.add(text);
         } else {
-            fileLines.set(lineIndex, data);
+            fileLines.set(lineIndex, text);
         }
         Files.write(path, fileLines, StandardCharsets.UTF_8);
     }

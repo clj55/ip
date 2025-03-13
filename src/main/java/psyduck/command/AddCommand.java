@@ -7,6 +7,9 @@ import java.io.IOException;
 import psyduck.exception.TaskUndefinedException;
 import psyduck.task.Task;
 
+/**
+ * Abstract Class for Adding Tasks
+ */
 public abstract class AddCommand extends Command{
     private String userInput;
 
