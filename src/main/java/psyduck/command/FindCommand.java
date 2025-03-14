@@ -11,6 +11,12 @@ public class FindCommand extends Command {
         keyword = userInput.substring(4).trim();
     }
 
+    /**
+     * Finds any occurence of keyword in TaskName
+     * e.g. find      cat: function will find "cat", a possible match is "hhhcathhh"
+     * e.g. find cat bowl: function will find "cat bowl"
+     * @return no Command Result as nothing to be stored in TaskFile
+     */
     public CommandResult execute() {
         if (keyword.isEmpty()) {
             System.out.println("What do you want to find?");
