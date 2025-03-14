@@ -27,16 +27,16 @@ public abstract class TaskIndexedCommand extends Command {
             int iNum = Integer.parseInt(details[1]);
             if ((iNum > count) || iNum <= 0) {
                 System.out.println("Psyduck: quacker not in list");
-                throw new TaskIndexUndefinedException();
+                throw new TaskIndexUndefinedException("Task Number not within number of tasks in TaskList");
             }
             iNum -= 1; // convert task number to index in tasklist
             return iNum;
         } catch (NumberFormatException e) {
             System.out.println("PSYDUCK ANGRY: PSYDUCK WANT NUMBERS");
-            throw new TaskIndexUndefinedException();
+            throw new TaskIndexUndefinedException("User input Non-number");
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Psyduck: what Task number");
-            throw new TaskIndexUndefinedException();
+            throw new TaskIndexUndefinedException("User did not input Task Name");
         }
     }
 

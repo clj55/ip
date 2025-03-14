@@ -3,8 +3,6 @@ package psyduck.command;
 import static psyduck.Psyduck.count;
 import static psyduck.Psyduck.taskList;
 
-import java.io.IOException;
-
 import psyduck.exception.TaskUndefinedException;
 import psyduck.task.Task;
 
@@ -30,20 +28,20 @@ public abstract class AddCommand extends Command {
         System.out.println("You have " + count + " psyduck tasks");
     }
 
-    public static void addtoTaskList(Task task) throws IOException {
+    public static void addtoTaskList(Task task) {
         taskList.add(task);
         count++;
         printAddTaskStatement(task);
     }
 
     protected String[] parseTask() throws TaskUndefinedException, ArrayIndexOutOfBoundsException {
-        if (!userInput.contains(" ")) {
-            throw new TaskUndefinedException();
+        if (userInput.isBlank()) {
+            throw new TaskUndefinedException("Task has no Task Name");
         }
         String[] details = userInput.split(" ", 2);
         String[] splitted = details[1].split("/");
-        if (splitted.length == 0 || splitted[0].isEmpty()) {
-            throw new TaskUndefinedException();
+        if (splitted.length == 0 || splitted[0].isBlank()) {
+            throw new TaskUndefinedException("Task has no datetime");
         }
         splitted[0] = splitted[0].trim();
         return splitted;

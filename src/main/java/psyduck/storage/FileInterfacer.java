@@ -42,6 +42,13 @@ public class FileInterfacer {
         } else {
             fileLines.set(lineIndex, data);
         }
+        writeFile(fileLines);
+    }
+
+    /**
+     * Rewrites entire file with fileLines
+     */
+    public void writeFile(List<String> fileLines) throws IOException {
         Files.write(path, fileLines, StandardCharsets.UTF_8);
     }
 

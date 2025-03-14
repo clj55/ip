@@ -19,6 +19,7 @@ public class Psyduck {
         UI.printIntro();
         TaskFileInterfacer TaskFile = new TaskFileInterfacer(TASK_LIST_FILEPATH);
         TaskFile.loadTaskFile();
+        TaskFile.rewriteTaskFile();
 
         String userInput = Parser.getUserInput();
         while (!userInput.equals("bye")) {
