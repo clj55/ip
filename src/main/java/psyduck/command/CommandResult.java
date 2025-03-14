@@ -2,17 +2,31 @@ package psyduck.command;
 
 import psyduck.task.Task;
 
+/**
+ * Contains Task Number and the converted text of the task to store in the task file
+ */
 public class CommandResult {
     public int taskNum;
     public String toStore;
     public boolean isDelete;
 
+    /**
+     * Creates Command Result from Command
+     * @param taskNum Task Number in TaskList
+     * @param task The new/modified/deleted task
+     * @param isDelete Indicates if the Command Result was from the Delete Command
+     */
     public CommandResult(int taskNum, Task task, boolean isDelete) {
         this.isDelete = isDelete;
         this.taskNum = taskNum;
         this.toStore = task.toFileString();
     }
 
+    /**
+     * Creates Command Result from Commands that only modify and do not delete tasks
+     * @param taskNum Task Number in TaskList
+     * @param task The new/modified task
+     */
     public CommandResult(int taskNum, Task task) {
         this.isDelete = false;
         this.taskNum = taskNum;

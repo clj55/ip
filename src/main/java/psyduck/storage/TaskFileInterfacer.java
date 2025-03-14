@@ -23,6 +23,10 @@ public class TaskFileInterfacer extends FileInterfacer {
         super(filepath);
     }
 
+    /**
+     * Loads data from the Task File into TaskFileList
+     * @throws IOException
+     */
     public void loadTaskFile() throws IOException {
         File f = new File(this.getFilepath());
         Scanner fileScanner = new Scanner(f);
@@ -71,6 +75,12 @@ public class TaskFileInterfacer extends FileInterfacer {
         writeFile(newFileLines);
     }
 
+    /**
+     * Saves result of the Command in the Task File
+     * e.g. After AddEvent, saves the event in the task file
+     * @param result CommandResult Object from Commands that add/delete/modify tasks
+     * @throws IOException
+     */
     public void savetoTaskFile(CommandResult result) throws IOException {
         if (result.isDelete()) {
             deleteLine(result.getTaskNum());

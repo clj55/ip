@@ -9,6 +9,9 @@ import psyduck.command.DeleteCommand;
 import psyduck.command.MarkCommand;
 import psyduck.command.UnmarkCommand;
 
+/**
+ * Contains functions for User Interface
+ */
 public class UI {
     public static final Map<Class<?>, String> commandFormats = Map.of(
             AddTodoCommand.class, "todo [description]",

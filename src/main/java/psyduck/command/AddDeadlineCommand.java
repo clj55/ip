@@ -15,6 +15,11 @@ public class AddDeadlineCommand extends AddCommand {
         super(userInput);
     }
 
+    /**
+     * Adds Deadline to TaskList
+     * @return Command Result with new Deadline
+     * @throws IOException
+     */
     public CommandResult execute() throws IOException {
 
         try {

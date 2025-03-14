@@ -6,7 +6,10 @@ import static psyduck.Psyduck.taskList;
 import psyduck.exception.TaskNameUndefinedException;
 import psyduck.task.Task;
 
-public abstract class AddCommand extends Command {
+/**
+ * Represents Commands that Add Tasks
+ */
+public abstract class AddCommand extends Command{
     private String userInput;
 
     public AddCommand(String userInput) {
