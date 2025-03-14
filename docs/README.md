@@ -5,7 +5,7 @@ Psyduck is a command-line Task Tracker designed to help users efficiently track 
 ---
 ## Quick Start
 1. Ensure you have Java 17 installed in your Computer
-2. Download the latest release (`ip.jar`) from here.
+2. Download the latest release (`ip.jar`) from [here](https://github.com/clj55/ip/releases/download/A-Release/ip.jar).
 3. Copy the file to the folder you want to store your tasks in. A PsyduckData folder will be **automatically created** in this folder containing the text file for data storage after you run the application.
 4. Open a command terminal, `cd` into the folder you put the `ip.jar` file in and use enter `java -jar ip.jar` command to run the application.
 5. If successful, Psyduck will greet you!
@@ -13,7 +13,7 @@ Psyduck is a command-line Task Tracker designed to help users efficiently track 
 ![img.png](img.png)
 
 6. Type the command in the command line and press Enter.
-7. Refer to [Commands]() below for more details.
+7. Refer to [Commands](https://clj55.github.io/ip/#commands) below for more details.
 
 
 ## Command Summary
@@ -155,7 +155,9 @@ BobChungus' `TaskList` Data is automatically saved as a `.txt` file at `[JAR fil
 <div style="border: 1px solid #FF9800; background-color: #FFEB3B; padding: 10px; border-radius: 5px;">
   <strong>Caution:</strong>  If your changes to the data file makes its format invalid, Psyduck will discard the erroneous line of data. Hence, it is recommended to take a backup of the file before editing it.
 <br>
+<br>
 Blank Lines between tasks will be removed by Psyduck.
+<br>
 <br>
 Furthermore, certain edits can cause Psyduck to behave in unexpected ways (e.g., if a value entered is outside of the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 
