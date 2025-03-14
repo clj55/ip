@@ -148,17 +148,17 @@ Furthermore, certain edits can cause Psyduck to behave in unexpected ways (e.g.,
 
 ## Command Summary
 
-| Command    | Description                        | Format                    | Example                                            |
-| ---------- |------------------------------------|---------------------------|----------------------------------------------------|
-| `bye`      | Exits the program                  | bye                       | `bye`                                              |
-| `list`     | Lists all tasks                    | list                      | `list`                                             |
-| `todo`     | Adds a to-do task                  | todo TASK_NAME            | `todo feed Psyducklings`                           |
-| `deadline` | Adds a deadline task               | deadline TASK_NAME /BY    | `deadline Heal /4PM`                               |
-| `event`    | Adds an event task                 | event TASK_NAME /FROM /TO | `event Conference /from 20-03-2025 /to 22-03-2025` |
-| `delete`   | Deletes a task                     | delete TASK_NUMBER        | `delete 2`                                         |
-| `mark`     | Marks a task as completed          | mark TASK_NUMBER          | `mark 3`                                           |
-| `unmark`   | Marks a task as not completed      | unmark TASK_NUMBER        | `unmark 1`                                         |
-| `find`     | Finds tasks by keyword in the name | find KEYWORD              | `find meeting`                                     |
+| Command    | Description                        | Format                    | Example                                     |
+| ---------- |------------------------------------|---------------------------|---------------------------------------------|
+| `bye`      | Exits the program                  | bye                       | `bye`                                       |
+| `list`     | Lists all tasks                    | list                      | `list`                                      |
+| `todo`     | Adds a to-do task                  | todo TASK_NAME            | `todo feed Psyducklings`                    |
+| `deadline` | Adds a deadline task               | deadline TASK_NAME /BY    | `deadline Heal /4PM`                        |
+| `event`    | Adds an event task                 | event TASK_NAME /FROM /TO | `event Pokebattle /20-03-2025 /to 22 March` |
+| `delete`   | Deletes a task                     | delete TASK_NUMBER        | `delete 2`                                  |
+| `mark`     | Marks a task as completed          | mark TASK_NUMBER          | `mark 3`                                    |
+| `unmark`   | Marks a task as not completed      | unmark TASK_NUMBER        | `unmark 1`                                  |
+| `find`     | Finds tasks by keyword in the name | find KEYWORD              | `find p`                                    |
 
 ---
 
