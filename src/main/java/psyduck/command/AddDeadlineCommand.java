@@ -5,7 +5,7 @@ import static psyduck.Psyduck.count;
 import java.io.IOException;
 
 import psyduck.exception.ExcessArgsException;
-import psyduck.exception.TaskUndefinedException;
+import psyduck.exception.TaskNameUndefinedException;
 import psyduck.task.Deadline;
 import psyduck.ui.UI;
 
@@ -29,7 +29,7 @@ public class AddDeadlineCommand extends AddCommand {
             return new CommandResult(count, newDeadline);
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Psyduck: When is the deadline?");
-        } catch (TaskUndefinedException e) {
+        } catch (TaskNameUndefinedException e) {
             System.out.println("Psyduck: Nani Deadline");
         } catch (ExcessArgsException e) {
             System.out.println("Psyduck: Too many datetimes, only 1 datetime allowed in Deadline");

@@ -3,7 +3,7 @@ package psyduck.command;
 import static psyduck.Psyduck.count;
 import static psyduck.Psyduck.taskList;
 
-import psyduck.exception.TaskUndefinedException;
+import psyduck.exception.TaskNameUndefinedException;
 import psyduck.task.Task;
 
 public abstract class AddCommand extends Command {
@@ -34,16 +34,18 @@ public abstract class AddCommand extends Command {
         printAddTaskStatement(task);
     }
 
-    protected String[] parseTask() throws TaskUndefinedException, ArrayIndexOutOfBoundsException {
-        if (userInput.isBlank()) {
-            throw new TaskUndefinedException("Task has no Task Name");
+    protected String[] parseTask() throws TaskNameUndefinedException {
+        try {
+            String details = userInput.split(" ", 2)[1];
+            String[] splitted = details.split("/");
+            if (splitted[0].isBlank()) {
+                throw new TaskNameUndefinedException("Task Name missing");
+            }
+            splitted[0] = splitted[0].trim();
+            return splitted;
+
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new TaskNameUndefinedException("Task Name missing");
         }
-        String[] details = userInput.split(" ", 2);
-        String[] splitted = details[1].split("/");
-        if (splitted.length == 0 || splitted[0].isBlank()) {
-            throw new TaskUndefinedException("Task has no datetime");
-        }
-        splitted[0] = splitted[0].trim();
-        return splitted;
     }
 }

@@ -12,6 +12,7 @@ import psyduck.command.InvalidCommand;
 import psyduck.command.ListCommand;
 import psyduck.command.MarkCommand;
 import psyduck.command.UnmarkCommand;
+import psyduck.exception.TaskFieldBlankException;
 import psyduck.ui.UI;
 
 public class Parser {
@@ -58,4 +59,11 @@ public class Parser {
         return userInput;
     }
 
+    public static void verifyNotBlank(String[] data) throws TaskFieldBlankException {
+        for (String field : data) {
+            if (field.isBlank()) {
+                throw new TaskFieldBlankException("Task Field is Blank");
+            }
+        }
+    }
 }

@@ -1,6 +1,8 @@
 package psyduck.storage;
 
+import static psyduck.Psyduck.taskList;
 import static psyduck.command.AddCommand.addtoTaskList;
+import static psyduck.parser.Parser.verifyNotBlank;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,11 +11,11 @@ import java.util.List;
 import java.util.Scanner;
 
 import psyduck.command.CommandResult;
+import psyduck.exception.TaskFieldBlankException;
+import psyduck.exception.TaskNameUndefinedException;
 import psyduck.task.Deadline;
 import psyduck.task.Event;
 import psyduck.task.Task;
-import static psyduck.Psyduck.taskList;
-import psyduck.exception.TaskUndefinedException;
 
 public class TaskFileInterfacer extends FileInterfacer {
 
@@ -32,31 +34,25 @@ public class TaskFileInterfacer extends FileInterfacer {
             }
             try {
                 String[] taskDetails = fileLine.split("/");
-                for (String taskDetail : taskDetails) {
-                    verifyNotBlank(taskDetail);
-                }
+                verifyNotBlank(taskDetails);
+
                 boolean taskIsDone = verifyIsDone(taskDetails[1]);
                 switch (taskDetails[0]) {
                 case "T" -> addtoTaskList(new Task(taskDetails[2], taskIsDone));
                 case "D" -> addtoTaskList(new Deadline(taskDetails[2], taskIsDone, taskDetails[3]));
                 case "E" -> addtoTaskList(new Event(taskDetails[2], taskIsDone, taskDetails[3], taskDetails[4]));
-                default -> throw new TaskUndefinedException("Type of Task (T/D/E) not specified in Task File");
+                default -> throw new TaskNameUndefinedException("Type of Task (T/D/E) not specified in Task File");
                 }
-            } catch (ArrayIndexOutOfBoundsException | TaskUndefinedException e) {
+            } catch (ArrayIndexOutOfBoundsException | TaskNameUndefinedException | TaskFieldBlankException e) {
                 System.out.println("This task could not be read and will be removed: " + fileLine);
             }
         }
     }
 
-    private static void verifyNotBlank(String data) throws TaskUndefinedException {
-        if (data.isBlank()) {
-            throw new TaskUndefinedException("Task Field is Blank");
-        }
-    }
 
-    private static boolean verifyIsDone(String isDone) throws TaskUndefinedException {
+    private static boolean verifyIsDone(String isDone) throws TaskNameUndefinedException {
         if (!(isDone.equals("1") | isDone.equals("0"))) {
-            throw new TaskUndefinedException("Task isDone is not 1 or 0");
+            throw new TaskNameUndefinedException("Task isDone is not 1 or 0");
         }
         return isDone.equals("1");
     }
@@ -64,6 +60,7 @@ public class TaskFileInterfacer extends FileInterfacer {
     /**
      * Rewrites TaskFile with only valid tasks
      * Removes extra lines and white spaces
+     *
      * @throws IOException
      */
     public void rewriteTaskFile() throws IOException {
