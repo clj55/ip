@@ -4,6 +4,11 @@ public class MarkCommand extends TaskIndexedCommand {
     public MarkCommand(String userInput) {
         super(userInput);
     }
+
+    /**
+     * Marks Task as Done in TaskList
+     * @return Command Result to update Task in TaskFile
+     */
     public CommandResult execute() {
         if (!this.isSuccessParse()) {
             return null;

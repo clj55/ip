@@ -5,6 +5,9 @@ import static psyduck.Psyduck.taskList;
 import psyduck.exception.TaskIndexUndefinedException;
 import psyduck.task.Task;
 
+/**
+ * Represents Commands that use Task Numbers instead of Task Description to identify Task
+ */
 public abstract class TaskIndexedCommand extends Command {
     private int index;
     protected Task task;

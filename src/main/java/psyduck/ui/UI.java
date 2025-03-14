@@ -1,5 +1,8 @@
 package psyduck.ui;
 
+/**
+ * Contains functions for User Interface
+ */
 public class UI {
     public static void printDashes() {
         System.out.println("--------------------------------------------");

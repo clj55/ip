@@ -4,6 +4,11 @@ public class UnmarkCommand extends TaskIndexedCommand {
     public UnmarkCommand(String userInput) {
         super(userInput);
     }
+
+    /**
+     * Unmarks Task in TaskList
+     * @return Command Result to update Task in TaskFile
+     */
     public CommandResult execute() {
         if (!this.isSuccessParse()) {
             return null;

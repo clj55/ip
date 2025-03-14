@@ -7,6 +7,10 @@ public class InvalidCommand extends Command {
         super();
     }
 
+    /**
+     * Gives Error Message when User types an Invalid Command
+     * @return null: No Command Result
+     */
     @Override
     public CommandResult execute() {
         System.out.println("Nani??");

@@ -8,6 +8,10 @@ public class DeleteCommand extends TaskIndexedCommand {
         super(userInput);
     }
 
+    /**
+     * Delete Task from TaskList
+     * @return CommandResult to be used to delete from TaskFile
+     */
     public CommandResult execute() {
         if (!this.isSuccessParse()) {
             return null;
