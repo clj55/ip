@@ -1,6 +1,6 @@
 # PSYDUCKKK - User Guide
 
-Psyduck is a command-line Task Tracker designed to help users manage efficiently track and manage their **todos**, **deadlines** and **events**.
+Psyduck is a command-line Task Tracker designed to help users efficiently track and manage their **todos**, **deadlines** and **events**.
 
 ---
 ## Quick Start
@@ -14,6 +14,23 @@ Psyduck is a command-line Task Tracker designed to help users manage efficiently
 
 6. Type the command in the command line and press Enter.
 7. Refer to [Commands]() below for more details.
+
+
+## Command Summary
+
+| Command    | Description                        | Format                    | Example                                     |
+| ---------- |------------------------------------|---------------------------|---------------------------------------------|
+| `bye`      | Exits the program                  | bye                       | `bye`                                       |
+| `list`     | Lists all tasks                    | list                      | `list`                                      |
+| `todo`     | Adds a to-do task                  | todo TASK_NAME            | `todo feed Psyducklings`                    |
+| `deadline` | Adds a deadline task               | deadline TASK_NAME /BY    | `deadline Heal /4PM`                        |
+| `event`    | Adds an event task                 | event TASK_NAME /FROM /TO | `event Pokebattle /20-03-2025 /to 22 March` |
+| `delete`   | Deletes a task                     | delete TASK_NUMBER        | `delete 2`                                  |
+| `mark`     | Marks a task as completed          | mark TASK_NUMBER          | `mark 3`                                    |
+| `unmark`   | Marks a task as not completed      | unmark TASK_NUMBER        | `unmark 1`                                  |
+| `find`     | Finds tasks by keyword in the name | find KEYWORD              | `find p`                                    |
+
+---
 
 ## Commands
 
@@ -137,28 +154,12 @@ BobChungus' `TaskList` Data is automatically saved as a `.txt` file at `[JAR fil
 
 <div style="border: 1px solid #FF9800; background-color: #FFEB3B; padding: 10px; border-radius: 5px;">
   <strong>Caution:</strong>  If your changes to the data file makes its format invalid, Psyduck will discard the erroneous line of data. Hence, it is recommended to take a backup of the file before editing it.
-
+<br>
 Blank Lines between tasks will be removed by Psyduck.
-
+<br>
 Furthermore, certain edits can cause Psyduck to behave in unexpected ways (e.g., if a value entered is outside of the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 
 </div>
-
----
-
-## Command Summary
-
-| Command    | Description                        | Format                    | Example                                     |
-| ---------- |------------------------------------|---------------------------|---------------------------------------------|
-| `bye`      | Exits the program                  | bye                       | `bye`                                       |
-| `list`     | Lists all tasks                    | list                      | `list`                                      |
-| `todo`     | Adds a to-do task                  | todo TASK_NAME            | `todo feed Psyducklings`                    |
-| `deadline` | Adds a deadline task               | deadline TASK_NAME /BY    | `deadline Heal /4PM`                        |
-| `event`    | Adds an event task                 | event TASK_NAME /FROM /TO | `event Pokebattle /20-03-2025 /to 22 March` |
-| `delete`   | Deletes a task                     | delete TASK_NUMBER        | `delete 2`                                  |
-| `mark`     | Marks a task as completed          | mark TASK_NUMBER          | `mark 3`                                    |
-| `unmark`   | Marks a task as not completed      | unmark TASK_NUMBER        | `unmark 1`                                  |
-| `find`     | Finds tasks by keyword in the name | find KEYWORD              | `find p`                                    |
 
 ---
 
