@@ -86,7 +86,7 @@ Psyduck is a command-line Task Tracker designed to help users efficiently track 
 
 - **Format:** `todo TASK_NAME`
 - **Note**: Extraneous spaces before `TASK_NAME` will be trimmed
-- **Example:** `todo Catch Pickachu` and <code>todo `      `Catch Pickachu</code> will both add the Todo "Catch Pickachu"
+- **Example:** `todo Catch Pickachu` adds the Todo "Catch Pickachu"
 
 ### **Create new deadline:** `deadline`
 
@@ -141,7 +141,7 @@ Psyduck is a command-line Task Tracker designed to help users efficiently track 
 - **Format:** `find KEYWORD`
 - **Note:** will find all occurrences of `KEYWORD` no matter where it is in the Task Name. Extra spaces before `KEYWORD` will be trimmed  
 - **Example:** "caterpillar" will be found when `find cat` is executed 
-- **Example:** "cat bowl" will be found when <code>find`   `cat bowl</code> is executed but not "cat"
+- **Example:** "cat bowl" will be found when `find cat bowl` is executed but not "cat"
 
 ### **Saving your data**
 
