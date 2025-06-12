@@ -1,15 +1,13 @@
 package psyduck.parser;
 
 import java.util.Scanner;
-
 import psyduck.command.AddDeadlineCommand;
 import psyduck.command.AddEventCommand;
 import psyduck.command.AddTodoCommand;
 import psyduck.command.Command;
 import psyduck.command.DeleteCommand;
 import psyduck.command.FindCommand;
-//wlekrjwlekrjwlkerjwekr
-///wlekrwlekrjlwkejrlkewjrlkwejrlwkejr
+import psyduck.command.InvalidCommand;
 import psyduck.command.ListCommand;
 import psyduck.command.MarkCommand;
 import psyduck.command.UnmarkCommand;
@@ -53,7 +51,6 @@ public class Parser {
             return new FindCommand(userInput);
         }
         return new InvalidCommand();
-        //welrkw;elrkw;lerk;lk
     }
 
     /**
